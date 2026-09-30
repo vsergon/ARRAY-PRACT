@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numbers[6] = {2, 4, 6, 8, 12};
+    int size = 5;
+
+    // Find the position of 4
+    int position = -1;
+
+    for (int i = 0; i < size; i++) {
+        if (numbers[i] == 4) {
+            position = i;
+            break;
+        }
+    }
+
+    // Remove 4 by shifting elements left
+    if (position != -1) {
+        for (int i = position; i < size - 1; i++) {
+            numbers[i] = numbers[i + 1];
+        }
+
+        size--;
+
+        // Find space and insert 9
+        for (int i = size; i > position; i--) {
+            numbers[i] = numbers[i - 1];
+        }
+
+        numbers[position] = 9;
+        size++;
+    }
+
+    // Display array
+    for (int i = 0; i < size; i++) {
+        cout << numbers[i] << " ";
+    }
+
+    return 0;
+}
